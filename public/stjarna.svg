@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="383 491 171 163">
+  <defs>
+    <radialGradient id="g" cx="0.38" cy="0.32" r="0.75">
+      <stop offset="0" stop-color="#F6E2A6"/>
+      <stop offset="0.45" stop-color="#D2A24A"/>
+      <stop offset="0.8" stop-color="#B7852A"/>
+      <stop offset="1" stop-color="#7E5A18"/>
+    </radialGradient>
+  </defs>
+  <!-- Samma stjärnform som på skylten (quickrev-skylt.svg, #stjarnor) -->
+  <path d="M468.54,493.98 L488.06,554.04 L551.21,554.04 L500.12,591.16 L519.63,651.23 L468.54,614.11 L417.45,651.23 L436.96,591.16 L385.87,554.04 L449.02,554.04Z" fill="url(#g)" stroke="#E9C77A" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>

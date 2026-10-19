@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Beställ | QuickRev UF</title>
+  <meta name="description" content="Beställ QuickRevs NFC-skylt för Google-recensioner. 549 kr, betala med Swish, personlig leverans i Kungsbacka med omnejd.">
+  <meta name="theme-color" content="#F6F6FB">
+  <link rel="icon" href="public/quickrev-logga.svg" type="image/svg+xml">
+  <link rel="preload" href="public/fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="public/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#innehall">Hoppa till innehållet</a>
+
+  <header class="nav" data-nav>
+    <div class="nav__bar glass">
+      <a class="nav__logo" href="index.html" aria-label="QuickRev UF, till startsidan">
+        <!-- TODO: byt till public/QuickRev_UF_logga_1.png när PNG-loggan finns -->
+        <img src="public/quickrev-logga.svg" alt="QuickRev UF" width="58" height="48">
+      </a>
+      <nav class="nav__links" aria-label="Huvudmeny">
+        <a href="index.html">Hem</a>
+        <a href="index.html#sa-funkar-det">Så funkar det</a>
+        <a href="index.html#produkten">Produkten</a>
+        <a href="index.html#fragor">Frågor</a>
+        <a href="om-oss.html">Om oss</a>
+      </nav>
+      <a class="btn btn--dark btn--sm nav__cta" href="bestall.html" aria-current="page">Beställ</a>
+      <button class="nav__menu" type="button" aria-expanded="false" aria-controls="meny" aria-label="Öppna meny" data-menu-toggle>
+        <span class="ic" style="--i:url(public/icons/list.svg)" data-icon-open></span>
+        <span class="ic" style="--i:url(public/icons/x.svg)" data-icon-close hidden></span>
+      </button>
+    </div>
+    <div class="sheet glass" id="meny" data-sheet hidden>
+      <a href="index.html">Hem</a>
+        <a href="index.html#sa-funkar-det">Så funkar det</a>
+      <a href="index.html#produkten">Produkten</a>
+      <a href="index.html#fragor">Frågor</a>
+      <a href="om-oss.html">Om oss</a>
+      <a class="btn btn--dark" href="bestall.html">Beställ</a>
+    </div>
+  </header>
+
+  <main id="innehall">
+    <!-- KONTAKT -->
+    <section class="contact section page-top" id="kontakt" aria-labelledby="contact-title">
+      <div class="wrap contact__grid">
+        <div class="contact__intro">
+          <p class="eyebrow">Beställ</p>
+          <h2 class="display" id="contact-title">Vill ni ha en skylt?</h2>
+          <p class="lead">Skicka en rad så hör vi av oss och bekräftar beställningen. Ni betalar enkelt med Swish.</p>
+          <ul class="order-facts">
+            <li><span class="ic" style="--i:url(public/icons/star-fill.svg)"></span><span><strong>549 kr per skylt.</strong> Med Google-profil 899 kr för båda. Ingen moms, inga månadsavgifter.</span></li>
+            <li><span class="ic" style="--i:url(public/icons/hand-tap.svg)"></span><span><strong>Klar att använda.</strong> Vi programmerar och låser länken åt er.</span></li>
+            <li><span class="ic" style="--i:url(public/icons/storefront.svg)"></span><span><strong>Personlig leverans</strong> i Kungsbacka med omnejd. Längre bort skickar vi med frakt.</span></li>
+          </ul>
+          <ul class="contact__details" data-contact-details hidden></ul>
+        </div>
+
+        <form class="form glass glass--thick" data-form novalidate>
+          <fieldset class="choice">
+            <legend>Vad vill ni beställa?</legend>
+            <div class="choice__grid">
+              <label class="choice__opt">
+                <input type="radio" name="paket" value="Skylt" checked>
+                <span class="choice__name">Skylt</span>
+                <span class="choice__price">549 kr</span>
+                <span class="choice__desc">Ni har redan en Google-profil.</span>
+              </label>
+              <label class="choice__opt choice__opt--best">
+                <input type="radio" name="paket" value="Skylt + Google-profil">
+                <span class="choice__badge">Spara 199 kr</span>
+                <span class="choice__name">Skylt + Google-profil</span>
+                <span class="choice__price">899 kr</span>
+                <span class="choice__desc">Vi sätter upp profilen och skylten.</span>
+              </label>
+              <label class="choice__opt">
+                <input type="radio" name="paket" value="Bara Google-profil">
+                <span class="choice__name">Bara Google-profil</span>
+                <span class="choice__price">549 kr</span>
+                <span class="choice__desc">Vi sätter upp er profil på Google.</span>
+              </label>
+            </div>
+          </fieldset>
+          <div class="form__row">
+            <div class="field">
+              <label for="f-namn">Namn</label>
+              <input id="f-namn" name="namn" type="text" autocomplete="name" required>
+              <p class="field__error" id="f-namn-err" hidden>Skriv ert namn.</p>
+            </div>
+            <div class="field">
+              <label for="f-foretag">Företag</label>
+              <input id="f-foretag" name="foretag" type="text" autocomplete="organization" required>
+              <p class="field__error" id="f-foretag-err" hidden>Skriv företagets namn.</p>
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="field">
+              <label for="f-epost">E-post</label>
+              <input id="f-epost" name="epost" type="email" autocomplete="email" inputmode="email" required>
+              <p class="field__error" id="f-epost-err" hidden>Skriv en giltig e-postadress.</p>
+            </div>
+            <div class="field">
+              <label for="f-telefon">Telefon <span class="field__opt">(valfritt)</span></label>
+              <input id="f-telefon" name="telefon" type="tel" autocomplete="tel" inputmode="tel">
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="field">
+              <label for="f-ort">Ort</label>
+              <input id="f-ort" name="ort" type="text" autocomplete="address-level2" required>
+              <p class="field__hint" id="f-ort-hint">I Kungsbacka med omnejd lämnar vi skylten personligen. Längre bort skickar vi med frakt.</p>
+              <p class="field__error" id="f-ort-err" hidden>Skriv vilken ort skylten ska till.</p>
+            </div>
+            <div class="field field--short" data-antal-field>
+              <label for="f-antal">Antal skyltar</label>
+              <input id="f-antal" name="antal" type="number" min="1" max="99" value="1" inputmode="numeric" required>
+              <p class="field__error" id="f-antal-err" hidden>Välj minst 1 skylt.</p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-meddelande">Meddelande <span class="field__opt">(valfritt)</span></label>
+            <textarea id="f-meddelande" name="meddelande" rows="4"></textarea>
+          </div>
+          <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn--dark btn--block" type="submit" data-submit>
+            <span data-submit-label>Skicka</span>
+          </button>
+          <p class="form__status" role="status" aria-live="polite" data-status></p>
+          <p class="form__note">Vi använder uppgifterna bara för att svara och leverera er beställning. Läs mer i vår <a href="integritetspolicy.html">integritetspolicy</a> och våra <a href="kopvillkor.html">köpvillkor</a>.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <img class="footer__logo" src="public/quickrev-logga.svg" alt="QuickRev UF" width="96" height="80" loading="lazy">
+      <div class="social" data-social></div>
+      <nav class="footer__links" aria-label="Sidfot">
+        <a href="index.html">Hem</a>
+        <a href="index.html#sa-funkar-det">Så funkar det</a>
+        <a href="index.html#produkten">Produkten</a>
+        <a href="index.html#fragor">Frågor</a>
+        <a href="om-oss.html">Om oss</a>
+        <a href="bestall.html">Beställ</a>
+      </nav>
+      <p class="footer__fine">QuickRev UF är ett UF-företag inom Ung Företagsamhet, Elof Lindälvs gymnasium, Kungsbacka.</p>
+      <p class="footer__fine"><a class="footer__legal" href="kopvillkor.html">Köpvillkor</a> &nbsp;·&nbsp; <a class="footer__legal" href="integritetspolicy.html">Integritetspolicy</a></p>
+      <p class="footer__fine">Google är ett varumärke som tillhör Google LLC. QuickRev är inte knutet till Google.</p>
+    </div>
+  </footer>
+</body>
+</html>

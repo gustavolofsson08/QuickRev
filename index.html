@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>QuickRev UF</title>
+  <meta name="description" content="En NFC-skylt vid kassan som tar era kunder direkt till er Google-recension. Ingen app, ingen prenumeration. 549 kr.">
+  <meta name="theme-color" content="#F6F6FB">
+  <link rel="icon" href="public/quickrev-logga.svg" type="image/svg+xml">
+  <link rel="preload" href="public/fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="public/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="public/quickrev-skylt.svg" as="image">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+
+  <a class="skip" href="#innehall">Hoppa till innehållet</a>
+
+  <!-- Navigering: flytande glaspill -->
+  <header class="nav" data-nav>
+    <div class="nav__bar glass">
+      <a class="nav__logo" href="#top" aria-label="QuickRev UF, till toppen">
+        <!-- TODO: byt till public/QuickRev_UF_logga_1.png när PNG-loggan finns -->
+        <img src="public/quickrev-logga.svg" alt="QuickRev UF" width="58" height="48">
+      </a>
+      <nav class="nav__links" aria-label="Huvudmeny">
+        <a href="#top">Hem</a>
+        <a href="#sa-funkar-det">Så funkar det</a>
+        <a href="#produkten">Produkten</a>
+        <a href="#fragor">Frågor</a>
+        <a href="om-oss.html">Om oss</a>
+      </nav>
+      <a class="btn btn--dark btn--sm nav__cta" href="bestall.html">Beställ</a>
+      <button class="nav__menu" type="button" aria-expanded="false" aria-controls="meny" aria-label="Öppna meny" data-menu-toggle>
+        <span class="ic" style="--i:url(public/icons/list.svg)" data-icon-open></span>
+        <span class="ic" style="--i:url(public/icons/x.svg)" data-icon-close hidden></span>
+      </button>
+    </div>
+    <div class="sheet glass" id="meny" data-sheet hidden>
+      <a href="#top">Hem</a>
+        <a href="#sa-funkar-det">Så funkar det</a>
+      <a href="#produkten">Produkten</a>
+      <a href="#fragor">Frågor</a>
+      <a href="om-oss.html">Om oss</a>
+      <a class="btn btn--dark" href="bestall.html">Beställ</a>
+    </div>
+  </header>
+
+  <main id="innehall">
+
+    <!-- HERO: affischen från affärsplanens framsida -->
+    <section class="hero" id="top">
+      <div class="hero__stage" data-tilt-zone>
+        <p class="hero__word" aria-hidden="true"><span>QUICK</span><span>REV</span></p>
+
+        <img class="star star--a" src="public/stjarna.svg" alt="" aria-hidden="true">
+        <img class="star star--b" src="public/stjarna.svg" alt="" aria-hidden="true">
+        <img class="star star--c" src="public/stjarna.svg" alt="" aria-hidden="true">
+        <img class="star star--d" src="public/stjarna.svg" alt="" aria-hidden="true">
+
+        <div class="plaque" data-tilt>
+          <div class="plaque__body">
+            <img src="public/quickrev-skylt.svg" alt="QuickRev-skylten: blå överdel med texten Lämna gärna en recension och fem guldstjärnor, vit nederdel med NFC-ikon, en hand med telefon och texten Blippa här." width="2048" height="2048" fetchpriority="high">
+            <span class="plaque__sheen" aria-hidden="true"></span>
+            <span class="plaque__glint" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__card glass glass--thick">
+        <h1 class="hero__title">Fler recensioner.<br>Ett blipp bort.</h1>
+        <p class="hero__lead">En NFC-skylt vid kassan som tar era kunder direkt till er Google-recension. Ingen app, ingen prenumeration.</p>
+        <div class="hero__actions">
+          <a class="btn btn--dark" href="bestall.html">Beställ <span class="ic" style="--i:url(public/icons/arrow-right.svg)"></span></a>
+          <a class="btn btn--ghost" href="#sa-funkar-det">Så funkar det</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEMET: utan skylt vs med skylt -->
+    <section class="compare section" aria-labelledby="compare-title">
+      <div class="wrap">
+        <h2 class="display" id="compare-title" data-reveal>Nöjda kunder recenserar sällan.</h2>
+        <p class="lead" data-reveal>Inte för att de inte vill. Det tar bara för många steg att hitta rätt.</p>
+
+        <div class="compare__grid">
+          <div class="compare__before" data-reveal>
+            <h3 class="compare__label">Utan skylt</h3>
+            <ol class="compare__steps">
+              <li><span class="ic" style="--i:url(public/icons/magnifying-glass.svg)"></span>Söka upp företaget på Google</li>
+              <li><span class="ic" style="--i:url(public/icons/storefront.svg)"></span>Hitta rätt företagsprofil</li>
+              <li><span class="ic" style="--i:url(public/icons/cursor-click.svg)"></span>Leta upp knappen för recensioner</li>
+              <li><span class="ic" style="--i:url(public/icons/pencil-simple-line.svg)"></span>Skriva och skicka</li>
+            </ol>
+          </div>
+          <div class="compare__after" data-reveal>
+            <h3 class="compare__label">Med QuickRev</h3>
+            <p class="compare__big"><span class="ic" style="--i:url(public/icons/hand-tap.svg)"></span>Blippa. Skriv.</p>
+            <p class="compare__note">Telefonen mot skylten öppnar recensionsrutan direkt. Resten av vägen är redan gjord.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SÅ FUNKAR DET -->
+    <section class="how section" id="sa-funkar-det" aria-labelledby="how-title">
+      <div class="wrap how__grid">
+        <div class="how__intro">
+          <p class="eyebrow">Tre steg</p>
+          <h2 class="display" id="how-title">Så funkar det</h2>
+          <p class="lead">Vi gör jobbet innan skylten hänger på er vägg. Ni sätter bara upp den.</p>
+        </div>
+        <ol class="how__steps">
+          <li class="how__step glass" data-reveal>
+            <span class="how__icon"><span class="ic" style="--i:url(public/icons/link-simple.svg)"></span></span>
+            <div>
+              <h3>Vi tar fram er Google-länk</h3>
+              <p>En kort länk från er Google-företagsprofil som öppnar recensionsrutan direkt.</p>
+            </div>
+          </li>
+          <li class="how__step glass" data-reveal>
+            <span class="how__icon"><span class="ic" style="--i:url(public/icons/lock-key.svg)"></span></span>
+            <div>
+              <h3>Vi programmerar och låser skylten</h3>
+              <p>Länken skrivs till chipet och låses före leverans. Ingen kan skriva över den.</p>
+            </div>
+          </li>
+          <li class="how__step glass" data-reveal>
+            <span class="how__icon how__icon--gold"><span class="ic" style="--i:url(public/icons/star-fill.svg)"></span></span>
+            <div>
+              <h3>Kunden blippar och recenserar</h3>
+              <p>Telefonen mot skylten. Recensionsrutan öppnas. Klart på några sekunder.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- PRODUKTEN: bento -->
+    <section class="product section" id="produkten" aria-labelledby="product-title">
+      <div class="wrap">
+        <h2 class="display" id="product-title" data-reveal>En skylt. Ett pris.</h2>
+
+        <div class="bento">
+          <figure class="bento__cell bento__hero" data-reveal>
+            <img src="public/quickrev-skylt.svg" alt="QuickRev-skylten sedd rakt framifrån" width="2048" height="2048" loading="lazy">
+          </figure>
+
+          <div class="bento__cell bento__price glass" data-reveal>
+            <p class="bento__kicker">Engångsköp</p>
+            <p class="price">549 kr</p>
+            <p class="bento__text">Ingen moms, ingen prenumeration och inga månadsavgifter. Ni betalar med Swish, och i Kungsbacka med omnejd lämnar vi skylten personligen.</p>
+            <a class="deal" href="bestall.html" data-deal>
+              <span class="deal__tag">Paket</span>
+              <span class="deal__body">
+                <span class="deal__title">Skylt + Google-profil <strong>899 kr</strong></span>
+                <span class="deal__text">Saknar ni profil? Vi sätter upp den åt er. Ni sparar 199 kr mot att köpa var för sig.</span>
+              </span>
+              <span class="ic deal__arrow" style="--i:url(public/icons/arrow-right.svg)"></span>
+            </a>
+            <a class="btn btn--dark" href="bestall.html">Beställ</a>
+          </div>
+
+          <div class="bento__spec flip" data-reveal>
+            <button class="flip__inner" type="button" aria-pressed="false" data-flip>
+              <span class="flip__face flip__front">
+                <span class="bento__value">120 × 120 mm</span>
+                <span class="bento__text">Kvadratisk. Sätts på väggen vid kassan eller entrén.</span>
+                <span class="flip__hint"><span class="ic" style="--i:url(public/icons/arrow-counter-clockwise.svg)"></span>Hur stor är den?</span>
+              </span>
+              <span class="flip__face flip__back" aria-hidden="true">
+                <span class="flip__title">Lika bred som en CD-skiva</span>
+                <span class="flip__list">
+                  <span>En CD är 120 mm, precis som skylten. Fast skylten är kvadratisk.</span>
+                  <span>Stor nog att synas vid kassan, liten nog att inte ta över disken.</span>
+                  <span>Sätts upp på vägg eller glas där kunden ändå står och väntar.</span>
+                </span>
+              </span>
+            </button>
+          </div>
+
+          <div class="bento__spec flip" data-reveal>
+            <button class="flip__inner" type="button" aria-pressed="false" data-flip>
+              <span class="flip__face flip__front">
+                <span class="bento__value">NXP NTAG213</span>
+                <span class="bento__text">Beprövat NFC-chip. Låst innan leverans.</span>
+                <span class="flip__hint"><span class="ic" style="--i:url(public/icons/arrow-counter-clockwise.svg)"></span>Är det säkert?</span>
+              </span>
+              <span class="flip__face flip__back" aria-hidden="true">
+                <span class="flip__title">Tryggt och enkelt</span>
+                <span class="flip__list">
+                  <span><strong>Inget batteri.</strong> Telefonen ger chipet ström i samma stund som den hålls mot skylten.</span>
+                  <span><strong>Bara en länk.</strong> Chipet läser inget från telefonen och samlar inte in några uppgifter.</span>
+                  <span><strong>Låst för gott.</strong> Ingen kan byta länken, och den finns kvar i minst tio år enligt tillverkaren NXP.</span>
+                </span>
+              </span>
+            </button>
+          </div>
+
+          <div class="bento__cell bento__wide glass" data-reveal>
+            <div class="bento__devices" aria-hidden="true">
+              <span class="ic" style="--i:url(public/icons/apple-logo.svg)"></span>
+              <span class="ic" style="--i:url(public/icons/android-logo.svg)"></span>
+            </div>
+            <div>
+              <p class="bento__value">iPhone och Android</p>
+              <p class="bento__text">Ingen app att ladda ner. Kunden använder telefonen som den är.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fit" data-reveal>
+          <p class="fit__label">Passar alla som möter sina kunder på plats, till exempel</p>
+          <ul class="pills">
+            <li><span class="ic" style="--i:url(public/icons/fork-knife.svg)"></span>Restauranger</li>
+            <li><span class="ic" style="--i:url(public/icons/coffee.svg)"></span>Caféer</li>
+            <li><span class="ic" style="--i:url(public/icons/bread.svg)"></span>Bagerier</li>
+            <li><span class="ic" style="--i:url(public/icons/pizza.svg)"></span>Pizzerior</li>
+            <li><span class="ic" style="--i:url(public/icons/storefront.svg)"></span>Butiker</li>
+            <li><span class="ic" style="--i:url(public/icons/flower.svg)"></span>Blomsterbutiker</li>
+            <li><span class="ic" style="--i:url(public/icons/scissors.svg)"></span>Frisörer</li>
+            <li><span class="ic" style="--i:url(public/icons/sparkle.svg)"></span>Skönhetssalonger</li>
+            <li><span class="ic" style="--i:url(public/icons/barbell.svg)"></span>Gym</li>
+            <li><span class="ic" style="--i:url(public/icons/tooth.svg)"></span>Kliniker</li>
+            <li><span class="ic" style="--i:url(public/icons/bed.svg)"></span>Hotell</li>
+            <li><span class="ic" style="--i:url(public/icons/car-profile.svg)"></span>Bilverkstäder</li>
+            <li><span class="ic" style="--i:url(public/icons/paw-print.svg)"></span>Djurbutiker</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PASSAR SKYLTEN ER? Tre snabba frågor -->
+    <section class="quiz section" id="passar-den" aria-labelledby="quiz-title">
+      <div class="wrap quiz__inner">
+        <h2 class="display" id="quiz-title" data-reveal>Fortfarande osäkra?</h2>
+        <p class="lead" data-reveal>Tre frågor, 20 sekunder. Sedan vet ni om skylten passar ert företag.</p>
+
+        <div class="quiz__card glass glass--thick" data-quiz data-reveal>
+          <p class="quiz__progress" data-quiz-progress aria-live="polite">Fråga 1 av 3</p>
+
+          <div class="quiz__step" data-step="1">
+            <h3 class="quiz__q">Träffar ni era kunder på plats?</h3>
+            <div class="quiz__options">
+              <button class="quiz__opt" type="button" data-answer="plats" data-value="dagligen">Ja, varje dag</button>
+              <button class="quiz__opt" type="button" data-answer="plats" data-value="ibland">Ja, ibland</button>
+              <button class="quiz__opt" type="button" data-answer="plats" data-value="digitalt">Nej, allt sker digitalt</button>
+            </div>
+          </div>
+
+          <div class="quiz__step" data-step="2" hidden>
+            <h3 class="quiz__q">Har ni en Google-företagsprofil?</h3>
+            <div class="quiz__options">
+              <button class="quiz__opt" type="button" data-answer="profil" data-value="ja">Ja</button>
+              <button class="quiz__opt" type="button" data-answer="profil" data-value="nej">Nej</button>
+              <button class="quiz__opt" type="button" data-answer="profil" data-value="vet-inte">Vet inte</button>
+            </div>
+          </div>
+
+          <div class="quiz__step" data-step="3" hidden>
+            <h3 class="quiz__q">Hur många Google-recensioner har ni i dag?</h3>
+            <div class="quiz__options">
+              <button class="quiz__opt" type="button" data-answer="antal" data-value="inga">Inga eller nästan inga</button>
+              <button class="quiz__opt" type="button" data-answer="antal" data-value="nagra">Några stycken</button>
+              <button class="quiz__opt" type="button" data-answer="antal" data-value="manga">Ganska många</button>
+            </div>
+          </div>
+
+          <div class="quiz__step quiz__result" data-step="result" hidden>
+            <span class="quiz__badge" data-result-icon aria-hidden="true"><span class="ic" style="--i:url(public/icons/check-circle.svg)"></span></span>
+            <h3 class="quiz__q" data-result-title></h3>
+            <div class="quiz__result-text" data-result-text></div>
+            <div class="quiz__actions">
+              <a class="btn btn--dark" href="bestall.html" data-result-cta>Beställ <span class="ic" style="--i:url(public/icons/arrow-right.svg)"></span></a>
+              <button class="btn btn--ghost" type="button" data-quiz-restart><span class="ic" style="--i:url(public/icons/arrow-counter-clockwise.svg)"></span>Gör om</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- VANLIGA FRÅGOR -->
+    <section class="faq section" id="fragor" aria-labelledby="faq-title">
+      <div class="wrap faq__inner">
+        <h2 class="display" id="faq-title" data-reveal>Vanliga frågor</h2>
+        <div class="faq__list" data-reveal>
+          <details class="faq__item glass">
+            <summary>Behövs en app?<span class="faq__icon ic" style="--i:url(public/icons/plus.svg)"></span></summary>
+            <div class="faq__answer"><p>Nej. Skylten använder NFC, samma teknik som när man blippar ett betalkort. Telefonen öppnar länken direkt i webbläsaren.</p></div>
+          </details>
+          <details class="faq__item glass">
+            <summary>Fungerar det på alla mobiler?<span class="faq__icon ic" style="--i:url(public/icons/plus.svg)"></span></summary>
+            <div class="faq__answer"><p>Ja, på alla mobiler med NFC, vilket i stort sett alla smartphones har i dag. iPhone XS och nyare läser skylten direkt när skärmen är upplåst. På iPhone 7 till X öppnar man först NFC-läsaren i Kontrollcenter. Android-telefoner fungerar när NFC är påslaget, vilket det oftast är från start.</p></div>
+          </details>
+          <details class="faq__item glass">
+            <summary>Kostar det något varje månad?<span class="faq__icon ic" style="--i:url(public/icons/plus.svg)"></span></summary>
+            <div class="faq__answer"><p>Nej. Skylten kostar 549 kr en gång. Som UF-företag tar vi inte ut moms. Ingen prenumeration och inga löpande avgifter.</p></div>
+          </details>
+          <details class="faq__item glass">
+            <summary>Hur betalar vi, och hur får vi skylten?<span class="faq__icon ic" style="--i:url(public/icons/plus.svg)"></span></summary>
+            <div class="faq__answer"><p>Ni betalar med Swish. I Kungsbacka med omnejd lämnar vi skylten personligen, utan extra kostnad, och ni betalar när ni får den.</p><p>Beställer ni längre bort skickar vi skylten med frakt och ni betalar i förväg. Frakten tar vi betalt för till självkostnadspris, utan påslag, och ni får veta beloppet innan ni betalar.</p></div>
+          </details>
+          <details class="faq__item glass">
+            <summary>Kan någon ändra länken på skylten?<span class="faq__icon ic" style="--i:url(public/icons/plus.svg)"></span></summary>
+            <div class="faq__answer"><p>Nej. Vi programmerar och låser chipet innan leverans, så länken går inte att skriva över. Vi testar också att varje skylt fungerar innan vi lämnar den.</p></div>
+          </details>
+          <details class="faq__item glass">
+            <summary>Vad händer om skylten slutar fungera?<span class="faq__icon ic" style="--i:url(public/icons/plus.svg)"></span></summary>
+            <div class="faq__answer"><p>Hör av er så försöker vi först laga den. Går det inte ersätter vi den med en ny.</p></div>
+          </details>
+          <details class="faq__item glass">
+            <summary>Hur snabbt svarar ni?<span class="faq__icon ic" style="--i:url(public/icons/plus.svg)"></span></summary>
+            <div class="faq__answer"><p>Samma dag. Vi svarar alltid på mejl samma dag, och ni kan också skicka ett DM till oss på Instagram.</p></div>
+          </details>
+          <details class="faq__item glass">
+            <summary>Vad behöver vi ha för att komma igång?<span class="faq__icon ic" style="--i:url(public/icons/plus.svg)"></span></summary>
+            <div class="faq__answer"><p>En Google-företagsprofil. Därifrån hämtar vi länken som skylten öppnar.</p><p>Har ni ingen profil än sätter vi upp en åt er. Tillsammans med skylten kostar det 899 kr för båda, och bara profilen kostar 549 kr. Profilen skapas i ert eget Google-konto, så den är alltid er. Själva verifieringen hos Google gör ni som ägare, och vi hjälper er genom den.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- AVSLUT: beställ -->
+    <section class="cta-band section" aria-labelledby="cta-title">
+      <div class="wrap">
+        <div class="cta-band__card" data-reveal>
+          <img class="cta-band__star" src="public/stjarna.svg" alt="" aria-hidden="true">
+          <h2 class="display cta-band__title" id="cta-title">Nästa nöjda kund kan bli en recension.</h2>
+          <p class="cta-band__text">549 kr, ingen moms och inga månadsavgifter. Vi lämnar skylten personligen i Kungsbacka med omnejd.</p>
+          <a class="btn btn--light" href="bestall.html">Beställ <span class="ic" style="--i:url(public/icons/arrow-right.svg)"></span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <img class="footer__logo" src="public/quickrev-logga.svg" alt="QuickRev UF" width="96" height="80" loading="lazy">
+      <div class="social" data-social></div>
+      <nav class="footer__links" aria-label="Sidfot">
+        <a href="#top">Hem</a>
+        <a href="#sa-funkar-det">Så funkar det</a>
+        <a href="#produkten">Produkten</a>
+        <a href="#fragor">Frågor</a>
+        <a href="om-oss.html">Om oss</a>
+        <a href="bestall.html">Beställ</a>
+      </nav>
+      <p class="footer__fine">QuickRev UF är ett UF-företag inom Ung Företagsamhet, Elof Lindälvs gymnasium, Kungsbacka.</p>
+      <p class="footer__fine"><a class="footer__legal" href="kopvillkor.html">Köpvillkor</a> &nbsp;·&nbsp; <a class="footer__legal" href="integritetspolicy.html">Integritetspolicy</a></p>
+      <p class="footer__fine">Google är ett varumärke som tillhör Google LLC. QuickRev är inte knutet till Google.</p>
+    </div>
+  </footer>
+
+</body></html>
