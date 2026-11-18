@@ -1168,3 +1168,14 @@ button { font: inherit; color: inherit; }
   .sheet[data-state="closed"] { transform: none; filter: none; }
   .faq__item::details-content { transition: none !important; }
 }
+
+/* ---------- Swish efter beställning ---------- */
+.swish { display: grid; grid-template-columns: 148px 1fr; gap: 20px; align-items: center; margin-top: 4px; padding: 18px; border-radius: 20px; background: var(--white, #fff); border: 1px solid rgb(20 20 24 / 0.1); }
+.swish__qr { width: 148px; aspect-ratio: 1; }
+.swish__qr svg { width: 100%; height: 100%; display: block; }
+.swish__text { display: grid; gap: 6px; color: var(--ink-soft); font-size: 0.95rem; }
+.swish__title { font-weight: 650; color: var(--ink); font-size: 1.05rem; }
+.swish__amount { font-weight: 700; color: var(--blue); font-size: 1.4rem; }
+.swish__text strong { color: var(--ink); white-space: nowrap; }
+.swish__note { font-size: 0.85rem; color: var(--ink-faint); }
+@media (max-width: 520px) { .swish { grid-template-columns: 1fr; justify-items: center; text-align: center; } .swish__qr { width: 180px; } }

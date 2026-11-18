@@ -4,13 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Beställ | QuickRev UF</title>
-  <meta name="description" content="Beställ QuickRevs NFC-skylt för Google-recensioner. 549 kr, betala med Swish, personlig leverans i Kungsbacka med omnejd.">
+  <meta name="description" content="Beställ QuickRevs NFC-skylt för Google-recensioner. 399 kr, betala med Swish, personlig leverans i Kungsbacka med omnejd.">
   <meta name="theme-color" content="#F6F6FB">
   <link rel="icon" href="public/quickrev-logga.svg" type="image/svg+xml">
   <link rel="preload" href="public/fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="public/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <script src="config.js" defer></script>
+  <script src="public/qrcode.js" defer></script>
   <script src="main.js" defer></script>
 </head>
 <body>
@@ -54,7 +55,7 @@
           <h2 class="display" id="contact-title">Vill ni ha en skylt?</h2>
           <p class="lead">Skicka en rad så hör vi av oss och bekräftar beställningen. Ni betalar enkelt med Swish.</p>
           <ul class="order-facts">
-            <li><span class="ic" style="--i:url(public/icons/star-fill.svg)"></span><span><strong>549 kr per skylt.</strong> Med Google-profil 899 kr för båda. Ingen moms, inga månadsavgifter.</span></li>
+            <li><span class="ic" style="--i:url(public/icons/star-fill.svg)"></span><span><strong>399 kr per skylt.</strong> Med Google-profil 799 kr för båda. Ingen moms, inga månadsavgifter.</span></li>
             <li><span class="ic" style="--i:url(public/icons/hand-tap.svg)"></span><span><strong>Klar att använda.</strong> Vi programmerar och låser länken åt er.</span></li>
             <li><span class="ic" style="--i:url(public/icons/storefront.svg)"></span><span><strong>Personlig leverans</strong> i Kungsbacka med omnejd. Längre bort skickar vi med frakt.</span></li>
           </ul>
@@ -68,20 +69,20 @@
               <label class="choice__opt">
                 <input type="radio" name="paket" value="Skylt" checked>
                 <span class="choice__name">Skylt</span>
-                <span class="choice__price">549 kr</span>
+                <span class="choice__price">399 kr</span>
                 <span class="choice__desc">Ni har redan en Google-profil.</span>
               </label>
               <label class="choice__opt choice__opt--best">
                 <input type="radio" name="paket" value="Skylt + Google-profil">
-                <span class="choice__badge">Spara 199 kr</span>
+                <span class="choice__badge">Allt i ett</span>
                 <span class="choice__name">Skylt + Google-profil</span>
-                <span class="choice__price">899 kr</span>
+                <span class="choice__price">799 kr</span>
                 <span class="choice__desc">Vi sätter upp profilen och skylten.</span>
               </label>
               <label class="choice__opt">
                 <input type="radio" name="paket" value="Bara Google-profil">
                 <span class="choice__name">Bara Google-profil</span>
-                <span class="choice__price">549 kr</span>
+                <span class="choice__price">399 kr</span>
                 <span class="choice__desc">Vi sätter upp er profil på Google.</span>
               </label>
             </div>
@@ -131,6 +132,15 @@
             <span data-submit-label>Skicka</span>
           </button>
           <p class="form__status" role="status" aria-live="polite" data-status></p>
+          <div class="swish" data-swish hidden>
+            <div class="swish__qr" data-swish-qr aria-hidden="true"></div>
+            <div class="swish__text">
+              <p class="swish__title">Betala med Swish</p>
+              <p class="swish__amount" data-swish-amount></p>
+              <p>Skanna koden med Swish-appen eller swisha till <strong>123&nbsp;702&nbsp;36&nbsp;17</strong>.</p>
+              <p class="swish__note">Lämnar vi skylten personligen betalar ni när ni får den. Skickar vi med frakt betalar ni i förväg, och vi meddelar fraktkostnaden först.</p>
+            </div>
+          </div>
           <p class="form__note">Vi använder uppgifterna bara för att svara och leverera er beställning. Läs mer i vår <a href="integritetspolicy.html">integritetspolicy</a> och våra <a href="kopvillkor.html">köpvillkor</a>.</p>
         </form>
       </div>

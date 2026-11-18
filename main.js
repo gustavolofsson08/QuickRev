@@ -310,7 +310,7 @@
         manga: "Ni har redan en bra grund. Skylten håller flödet av nya recensioner igång, så att profilen fortsätter kännas aktuell.",
       },
       profil: {
-        nej: "Har ni ingen Google-företagsprofil än sätter vi upp en åt er. Skylt och profil tillsammans kostar 899 kr, 199 kr mindre än att köpa dem var för sig.",
+        nej: "Har ni ingen Google-företagsprofil än sätter vi upp en åt er. Skylt och profil tillsammans kostar 799 kr.",
         "vet-inte": "Osäkra på om ni har en Google-företagsprofil? Vi kollar det åt er när ni hör av er.",
       },
     };
@@ -459,6 +459,27 @@
       input.addEventListener("input", () => { if (input.getAttribute("aria-invalid") === "true") check(input); });
     });
 
+    // Swish-QR med rätt belopp. Formatet C<nummer>;<belopp>;<meddelande>;<lås> läses av Swish-appen.
+    // Lås 4 = nummer och belopp låsta, meddelandet går att ändra.
+    const SWISH_NR = "1237023617";
+    const swishBox = form.querySelector("[data-swish]");
+    const showSwish = (belopp, foretag) => {
+      if (!swishBox) return;
+      const meddelande = `QuickRev ${String(foretag || "").replace(/;/g, " ")}`.trim().slice(0, 50);
+      const qrBox = swishBox.querySelector("[data-swish-qr]");
+      if (typeof window.qrcode === "function") {
+        const qr = window.qrcode(0, "M");
+        qr.addData(`C${SWISH_NR};${belopp};${meddelande};4`, "Byte");
+        qr.make();
+        qrBox.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 2, scalable: true });
+      } else {
+        qrBox.hidden = true;
+      }
+      swishBox.querySelector("[data-swish-amount]").textContent = `${belopp} kr`;
+      swishBox.hidden = false;
+      swishBox.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest" });
+    };
+
     const setStatus = (text, tone) => {
       status.textContent = text;
       if (tone) status.dataset.tone = tone; else delete status.dataset.tone;
@@ -475,6 +496,17 @@
       const data = new FormData(form);
       if (data.get("_gotcha")) return;
 
+      // Belopp och fält som Formspree använder (svarsadress och ämnesrad i mejlet)
+      const PRISER = { "Skylt": 399, "Skylt + Google-profil": 799, "Bara Google-profil": 399 };
+      const valtPaket = data.get("paket") || "Skylt";
+      const antal = valtPaket === "Bara Google-profil" ? 1 : Math.max(1, Number(data.get("antal")) || 1);
+      const extraSkyltar = valtPaket === "Skylt + Google-profil" ? (antal - 1) * PRISER["Skylt"] : 0;
+      const belopp = valtPaket === "Skylt" ? PRISER["Skylt"] * antal : PRISER[valtPaket] + extraSkyltar;
+      data.set("belopp", `${belopp} kr`);
+      data.set("_replyto", String(data.get("epost") || ""));
+      data.set("_subject", `Beställning QuickRev: ${data.get("foretag")}`);
+      if (valtPaket === "Bara Google-profil") data.delete("antal");
+
       if (cfg.formEndpoint) {
         submit.setAttribute("aria-busy", "true");
         label.textContent = "Skickar...";
@@ -484,7 +516,8 @@
           if (!res.ok) throw new Error(String(res.status));
           form.reset();
           required.forEach((i) => i.removeAttribute("aria-invalid"));
-          setStatus("Tack! Vi hör av oss så snart vi kan.", "ok");
+          setStatus("Tack! Beställningen är skickad. Vi hör av oss samma dag.", "ok");
+          showSwish(belopp, data.get("foretag"));
         } catch {
           setStatus(cfg.epost ? `Det gick inte att skicka. Mejla oss gärna på ${cfg.epost}.` : "Det gick inte att skicka. Försök igen om en stund.", "err");
         } finally {
@@ -504,12 +537,14 @@
           `Telefon: ${data.get("telefon") || "-"}`,
           `Ort: ${data.get("ort")}`,
           paket === "Bara Google-profil" ? "" : `Antal skyltar: ${data.get("antal")}`,
+          `Belopp: ${belopp} kr`,
           "",
           String(data.get("meddelande") || ""),
         ];
         const subject = `Beställning QuickRev: ${data.get("foretag")}`;
         window.location.href = `mailto:${cfg.epost}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
         setStatus("Ert mejlprogram öppnas med beställningen ifylld.", "ok");
+        showSwish(belopp, data.get("foretag"));
         return;
       }
 
