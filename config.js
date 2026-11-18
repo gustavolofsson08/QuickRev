@@ -7,7 +7,7 @@ window.QUICKREV = {
 
   // Adress dit formuläret skickas (t.ex. Formspree eller Web3Forms).
   // Lämnas den tom öppnas besökarens mejlprogram med ifyllt mejl till "epost" ovan.
-  formEndpoint: "",
+  formEndpoint: "https://formspree.io/f/maeoozal",
 
   // Besöksstatistik utan cookies (Cloudflare Web Analytics, gratis).
   // Skapa konto på dash.cloudflare.com -> Analytics & Logs -> Web Analytics -> Add a site,
