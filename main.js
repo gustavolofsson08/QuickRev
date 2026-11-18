@@ -463,9 +463,13 @@
     // Lås 4 = nummer och belopp låsta, meddelandet går att ändra.
     const SWISH_NR = "1237023617";
     const swishBox = form.querySelector("[data-swish]");
-    const showSwish = (belopp, foretag) => {
+    const showSwish = (belopp, foretag, ordernummer) => {
       if (!swishBox) return;
-      const meddelande = `QuickRev ${String(foretag || "").replace(/;/g, " ")}`.trim().slice(0, 50);
+      const meddelande = (ordernummer
+        ? `${ordernummer} ${String(foretag || "").replace(/;/g, " ")}`
+        : `QuickRev ${String(foretag || "").replace(/;/g, " ")}`).trim().slice(0, 50);
+      const ref = swishBox.querySelector("[data-swish-ref]");
+      if (ref) { ref.hidden = !ordernummer; ref.querySelector("strong").textContent = ordernummer || ""; }
       const qrBox = swishBox.querySelector("[data-swish-qr]");
       if (typeof window.qrcode === "function") {
         const qr = window.qrcode(0, "M");
@@ -507,17 +511,41 @@
       data.set("_subject", `Beställning QuickRev: ${data.get("foretag")}`);
       if (valtPaket === "Bara Google-profil") data.delete("antal");
 
-      if (cfg.formEndpoint) {
+      if (cfg.orderEndpoint || cfg.formEndpoint) {
         submit.setAttribute("aria-busy", "true");
         label.textContent = "Skickar...";
         setStatus("");
         try {
-          const res = await fetch(cfg.formEndpoint, { method: "POST", body: data, headers: { Accept: "application/json" } });
-          if (!res.ok) throw new Error(String(res.status));
+          let ordernummer = "";
+          // 1. Vår egen funktion ger ordern ett löpnummer (QR-001 ...) och mejlar den via Formspree
+          let skickad = false;
+          if (cfg.orderEndpoint) {
+            try {
+              const res = await fetch(cfg.orderEndpoint, {
+                method: "POST",
+                headers: { "Content-Type": "application/json", Accept: "application/json" },
+                body: JSON.stringify(Object.fromEntries(data)),
+              });
+              const json = await res.json().catch(() => ({}));
+              if (res.ok) { skickad = true; ordernummer = json.ordernummer || ""; }
+              else if (json.ordernummer) { ordernummer = json.ordernummer; }
+            } catch {}
+          }
+          // 2. Reserv: skicka direkt till Formspree (utan ordernummer)
+          if (!skickad && cfg.formEndpoint) {
+            if (ordernummer) data.set("ordernummer", ordernummer);
+            const res = await fetch(cfg.formEndpoint, { method: "POST", body: data, headers: { Accept: "application/json" } });
+            if (!res.ok) throw new Error(String(res.status));
+            skickad = true;
+          }
+          if (!skickad) throw new Error("ej skickad");
+          const foretag = data.get("foretag");
           form.reset();
           required.forEach((i) => i.removeAttribute("aria-invalid"));
-          setStatus("Tack! Beställningen är skickad. Vi hör av oss samma dag.", "ok");
-          showSwish(belopp, data.get("foretag"));
+          setStatus(ordernummer
+            ? `Tack! Er beställning har ordernummer ${ordernummer}. Vi bekräftar den när betalningen har kommit in.`
+            : "Tack! Beställningen är skickad. Vi bekräftar den när betalningen har kommit in.", "ok");
+          showSwish(belopp, foretag, ordernummer);
         } catch {
           setStatus(cfg.epost ? `Det gick inte att skicka. Mejla oss gärna på ${cfg.epost}.` : "Det gick inte att skicka. Försök igen om en stund.", "err");
         } finally {

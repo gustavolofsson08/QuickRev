@@ -1,0 +1,8 @@
+{
+  "name": "quickrev",
+  "private": true,
+  "description": "QuickRev UF hemsida. Statisk sajt plus en serverfunktion för beställningar (api/order.js).",
+  "dependencies": {
+    "@vercel/blob": "^2.9.0"
+  }
+}
